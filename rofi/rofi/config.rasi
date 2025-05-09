@@ -1,0 +1,5 @@
+configuration {
+    font: "DepartureMono 7";
+    background-color: #1A1B26;
+    color: #c0caf5;
+}
