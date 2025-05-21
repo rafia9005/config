@@ -2,7 +2,7 @@ super + Return
 	alacritty
 
 super + m
-	exec rofi -show drun
+	exec bemenu-run
 
 super + Escape
 	pkill -USR1 -x sxhkd
@@ -13,7 +13,7 @@ super + alt + {q,r}
 
 # close and kill
 super + q
-	bspc node -{c,k}
+	bspc node -c
 
 # alternate between the tiled and monocle layout
 super + d
