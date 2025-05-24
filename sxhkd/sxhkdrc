@@ -110,10 +110,7 @@ super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
 super + alt + g 
-  exec polybar &
-
-super + alt + f 
-  pkill polybar
+  exec bash ~/.config/polybar/launch.sh
 
 super + e 
   exec thunar
