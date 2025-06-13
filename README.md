@@ -45,6 +45,7 @@ This repository contains my personal configuration files (dotfiles) for various 
 
 Feel free to use, modify, and share these dotfiles. Contributions are welcome!
 
+
 ---
 
 Happy customizing! 🚀
