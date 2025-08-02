@@ -1,5 +1,10 @@
-configuration {
-    font: "DepartureMono 7";
-    background-color: #1A1B26;
-    color: #c0caf5;
+configuration{
+    modi: "drun";
+    icon-theme: "Oranchelo";
+    drun-display-format: "{name}";
+    disable-history: false;
+    hide-scrollbar: true;
+    display-drun: "   Run ";
 }
+
+@theme "themes"

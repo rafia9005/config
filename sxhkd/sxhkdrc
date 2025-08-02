@@ -2,7 +2,7 @@ super + Return
 	alacritty
 
 super + m
-	exec dmenu_run
+	exec rofi -show drun
 
 super + Escape
 	pkill -USR1 -x sxhkd
