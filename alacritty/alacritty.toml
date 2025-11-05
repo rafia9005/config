@@ -24,22 +24,22 @@ white   = '#acb0d0'
 
 [font]
 # size = 6.3
-size = 5.8
+size = 5
 
 [font.bold]
-family = "JetBrains Mono Nerd Font"
+family = "B612 Mono"
 style = "Bold"
 
 [font.bold_italic]
-family = "JetBrains Mono Nerd Font"
+family = "B612 Mono"
 style = "Bold Italic"
 
 [font.italic]
-family = "JetBrains Mono Nerd Font"
+family = "B612 Mono"
 style = "Italic"
 
 [font.normal]
-family = "JetBrains Mono Nerd Font"
+family = "B612 Mono"
 style = "Regular"
 
 [window]

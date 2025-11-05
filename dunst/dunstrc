@@ -1,0 +1,159 @@
+# See dunst(5) for all configuration options
+
+[global]
+    ### Display ###
+    monitor = 0
+    follow = none
+
+    ### Geometry ###
+    # Lebar notifikasi diatur menjadi 350px
+    width = 350
+
+    # Tinggi dinamis, maksimum 300px
+    height = (0, 300)
+
+    # Posisi di pojok kanan atas
+    origin = top-right
+
+    # Offset dari tepi layar (20px kanan, 20px atas)
+    offset = (20, 20)
+
+    # Sedikit transparansi (jika compositor seperti Picom aktif)
+    transparency = 10
+
+    # Draw a line of "separator_height" pixel height between two notifications.
+    # Set to 0 to disable.
+    separator_height = 2
+    
+    # Padding/jarak horizontal dan vertikal yang lebih besar untuk tampilan "clean"
+    padding = 12
+    horizontal_padding = 12
+    text_icon_padding = 8
+
+    # Border frame tipis
+    frame_width = 2
+    # Warna frame menggunakan warna Tokyo Night - Grayish Blue
+    frame_color = "#414868"
+
+    # Sudut membulat modern
+    corner_radius = 8
+    corners = all
+    
+    # Progress bar diaktifkan
+    progress_bar = true
+    progress_bar_height = 10
+    progress_bar_frame_width = 1
+    progress_bar_min_width = 150
+    progress_bar_max_width = 300
+    progress_bar_corner_radius = 4
+
+    # Pisahkan warna separator dengan frame
+    separator_color = frame
+
+    sort = yes
+    indicate_hidden = yes
+
+    ### Text ###
+    # Font yang lebih nyaman
+    font = Monospace 10
+
+    # Izinkan markup HTML untuk tampilan judul tebal dan ikon
+    markup = full
+    format = "<b>%s</b>\n%b"
+
+    alignment = left
+    vertical_alignment = center
+    ellipsize = middle
+    ignore_newline = no
+    stack_duplicates = true
+    hide_duplicate_count = false
+    show_indicators = yes
+
+    ### Icons ###
+    enable_recursive_icon_lookup = true
+    icon_theme = Adwaita
+    icon_position = left
+    min_icon_size = 32
+    max_icon_size = 128
+    icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
+
+    ### History ###
+    sticky_history = yes
+    history_length = 20
+
+    ### Misc/Advanced ###
+    dmenu = /usr/bin/dmenu -p dunst:
+    browser = /usr/bin/xdg-open
+    always_run_script = true
+    title = Dunst
+    class = Dunst
+    ignore_dbusclose = false
+    force_xwayland = false
+
+    ### mouse ###
+    mouse_left_click = close_current
+    mouse_middle_click = do_action, close_current
+    mouse_right_click = close_all
+
+[experimental]
+    per_monitor_dpi = false
+
+
+# =========================================================================
+# Urgency Levels (Tokyo Night Color Palette)
+# =========================================================================
+
+[urgency_low]
+    # Background: Tokyo Night Dark Blue
+    background = "#1a1b26"
+    # Foreground: Tokyo Night Pale Blue
+    foreground = "#a9b1d6"
+    timeout = 5
+    default_icon = dialog-information
+
+[urgency_normal]
+    # Background: Tokyo Night Dark Blue
+    background = "#1a1b26"
+    # Foreground: Tokyo Night Pale Blue
+    foreground = "#a9b1d6"
+    timeout = 8
+    override_pause_level = 30
+    default_icon = dialog-information
+
+[urgency_critical]
+    # Background: Merah Tua
+    background = "#900000"
+    # Foreground: Putih
+    foreground = "#ffffff"
+    # Frame Warna Tokyo Night Accent (Coral/Oranye)
+    frame_color = "#ff9e64"
+    timeout = 0
+    override_pause_level = 60
+    default_icon = dialog-warning
+
+# =========================================================================
+# Custom Rules (Opsional)
+# =========================================================================
+
+
+# =========================================================================
+# Rule untuk Spotify (menggunakan spotify-launcher)
+# =========================================================================
+[music_player]
+    # Ganti appname ke nama yang spesifik dari launcher
+    appname = "spotify-launcher"
+    
+    # Atau coba nama aplikasi finalnya (terkadang juga berfungsi)
+    # appname = "spotify" 
+    
+    # Warna Khusus Tokyo Night (Biru-Ungu yang lebih terang)
+    background = "#3e445b"
+    foreground = "#a9b1d6"
+
+    # Atur Urgensi & Display
+    urgency = normal
+    timeout = 8
+    skip_display = false 
+    
+    # Stack Tag agar notifikasi lagu baru menggantikan yang lama
+    set_stack_tag = "music"
