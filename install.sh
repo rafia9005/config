@@ -24,19 +24,19 @@ print_error() {
 }
 
 if [ "$EUID" -eq 0 ]; then 
-    print_error "Jangan jalankan script ini sebagai root!"
+    print_error "Don't run this script as root!"
     exit 1
 fi
 
 if [ ! -f /etc/arch-release ]; then
-    print_error "Script ini hanya untuk Arch Linux!"
+    print_error "This script is only for Arch Linux!"
     exit 1
 fi
 
-print_info "Memulai instalasi dependensi..."
+print_info "Starting dependency installation..."
 echo ""
 
-print_info "Mengupdate sistem..."
+print_info "Updating system..."
 sudo pacman -Syu --noconfirm
 
 PACKAGES=(
@@ -116,30 +116,30 @@ PACKAGES=(
     "dconf-editor"
 )
 
-print_info "Menginstall packages utama..."
+print_info "Installing main packages..."
 for package in "${PACKAGES[@]}"; do
     if pacman -Qs $package > /dev/null ; then
-        print_success "$package sudah terinstall"
+        print_success "$package already installed"
     else
-        print_info "Menginstall $package..."
+        print_info "Installing $package..."
         sudo pacman -S --noconfirm $package
     fi
 done
 
 echo ""
-print_success "Semua packages utama berhasil diinstall!"
+print_success "All main packages successfully installed!"
 echo ""
 
 if ! command -v yay &> /dev/null; then
-    print_info "Menginstall yay (AUR helper)..."
+    print_info "Installing yay (AUR helper)..."
     cd /tmp
     git clone https://aur.archlinux.org/yay.git
     cd yay
     makepkg -si --noconfirm
     cd ~
-    print_success "yay berhasil diinstall!"
+    print_success "yay successfully installed!"
 else
-    print_success "yay sudah terinstall"
+    print_success "yay already installed"
 fi
 
 AUR_PACKAGES=(
@@ -155,15 +155,15 @@ AUR_PACKAGES=(
     "tela-icon-theme"
 )
 
-print_info "Apakah Anda ingin menginstall package dari AUR? (y/n)"
+print_info "Do you want to install packages from AUR? (y/n)"
 read -r response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-    print_info "Menginstall packages dari AUR..."
+    print_info "Installing packages from AUR..."
     for package in "${AUR_PACKAGES[@]}"; do
         if yay -Qs $package > /dev/null ; then
-            print_success "$package sudah terinstall"
+            print_success "$package already installed"
         else
-            print_info "Menginstall $package..."
+            print_info "Installing $package..."
             yay -S --noconfirm $package
         fi
     done
@@ -174,13 +174,13 @@ echo ""
 print_info "Setting up libinput-gestures..."
 sudo gpasswd -a $USER input
 if [ -f "libinput-gestures.conf" ]; then
-    print_info "Menyalin konfigurasi libinput-gestures..."
+    print_info "Copying libinput-gestures configuration..."
     mkdir -p ~/.config
     cp libinput-gestures.conf ~/.config/
-    print_success "Konfigurasi libinput-gestures berhasil disalin"
+    print_success "libinput-gestures configuration successfully copied"
 fi
 
-print_info "Membuat konfigurasi GTK default..."
+print_info "Creating default GTK configuration..."
 mkdir -p ~/.config/gtk-3.0
 mkdir -p ~/.config/gtk-4.0
 
@@ -204,7 +204,7 @@ gtk-xft-rgba=rgb
 gtk-application-prefer-dark-theme=1
 EOF
 
-print_success "Konfigurasi GTK 3.0 berhasil dibuat"
+print_success "GTK 3.0 configuration successfully created"
 
 cat > ~/.config/gtk-4.0/settings.ini << 'EOF'
 [Settings]
@@ -216,7 +216,7 @@ gtk-cursor-theme-size=24
 gtk-application-prefer-dark-theme=1
 EOF
 
-print_success "Konfigurasi GTK 4.0 berhasil dibuat"
+print_success "GTK 4.0 configuration successfully created"
 
 cat > ~/.gtkrc-2.0 << 'EOF'
 gtk-theme-name="Adwaita-dark"
@@ -236,9 +236,9 @@ gtk-xft-hintstyle="hintfull"
 gtk-xft-rgba="rgb"
 EOF
 
-print_success "Konfigurasi GTK 2.0 berhasil dibuat"
+print_success "GTK 2.0 configuration successfully created"
 
-print_info "Membuat konfigurasi Qt5..."
+print_info "Creating Qt5 configuration..."
 mkdir -p ~/.config/qt5ct
 cat > ~/.config/qt5ct/qt5ct.conf << 'EOF'
 [Appearance]
@@ -271,39 +271,39 @@ wheel_scroll_lines=3
 geometry=@ByteArray()
 EOF
 
-print_success "Konfigurasi Qt5 berhasil dibuat"
+print_success "Qt5 configuration successfully created"
 
 if ! grep -q "QT_QPA_PLATFORMTHEME" ~/.profile 2>/dev/null; then
     echo 'export QT_QPA_PLATFORMTHEME=qt5ct' >> ~/.profile
-    print_success "QT_QPA_PLATFORMTHEME ditambahkan ke ~/.profile"
+    print_success "QT_QPA_PLATFORMTHEME added to ~/.profile"
 fi
 
-print_success "Setup GTK & Qt configuration selesai!"
+print_success "GTK & Qt configuration setup complete!"
 echo ""
 
-print_info "Mengaktifkan services..."
+print_info "Enabling services..."
 sudo systemctl enable NetworkManager
 sudo systemctl enable acpid
 
-print_success "Services berhasil diaktifkan!"
+print_success "Services successfully enabled!"
 echo ""
 
-print_info "Apakah Anda ingin menyalin semua konfigurasi ke ~/.config? (y/n)"
+print_info "Do you want to copy all configurations to ~/.config? (y/n)"
 read -r response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-    print_info "Membuat backup konfigurasi lama..."
+    print_info "Creating backup of old configuration..."
     if [ -d ~/.config ]; then
         mv ~/.config ~/.config.backup.$(date +%Y%m%d_%H%M%S)
-        print_success "Backup dibuat di ~/.config.backup.$(date +%Y%m%d_%H%M%S)"
+        print_success "Backup created at ~/.config.backup.$(date +%Y%m%d_%H%M%S)"
     fi
     
-    print_info "Menyalin konfigurasi..."
+    print_info "Copying configurations..."
     mkdir -p ~/.config
     
     for dir in alacritty bspwm dunst nvim picom polybar rofi sxhkd vesktop; do
         if [ -d "$dir" ]; then
             cp -r "$dir" ~/.config/
-            print_success "Konfigurasi $dir berhasil disalin"
+            print_success "Configuration $dir successfully copied"
         fi
     done
     
@@ -313,12 +313,12 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     
     mkdir -p ~/Pictures
     
-    print_success "Semua konfigurasi berhasil disalin!"
+    print_success "All configurations successfully copied!"
 fi
 
 echo ""
 
-print_info "Mengatur permission untuk scripts..."
+print_info "Setting permissions for scripts..."
 chmod +x ~/.config/bspwm/bspwmrc
 chmod +x ~/.config/polybar/launch.sh
 if [ -f ~/.config/bspwm/title_bar.sh ]; then
@@ -337,15 +337,15 @@ if [ -f ~/.config/polybar/script/random_wallpaper.sh ]; then
     chmod +x ~/.config/polybar/script/random_wallpaper.sh
 fi
 
-print_success "Permission berhasil diatur!"
+print_success "Permissions successfully set!"
 echo ""
 
 if command -v nvim &> /dev/null; then
-    print_info "Apakah Anda ingin menginstall plugin Neovim sekarang? (y/n)"
+    print_info "Do you want to install Neovim plugins now? (y/n)"
     read -r response
     if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-        print_info "Membuka Neovim untuk menginstall plugins..."
-        print_warning "Tekan :q untuk keluar setelah plugins selesai diinstall"
+        print_info "Opening Neovim to install plugins..."
+        print_warning "Press :q to exit after plugins are installed"
         sleep 2
         nvim +PackerSync
     fi
@@ -353,25 +353,25 @@ fi
 
 echo ""
 print_success "======================================"
-print_success "    INSTALASI SELESAI!"
+print_success "    INSTALLATION COMPLETE!"
 print_success "======================================"
 echo ""
-print_info "Langkah selanjutnya:"
-echo "1. Logout dari sesi saat ini"
-echo "2. Login dengan BSPWM sebagai window manager"
-echo "3. Atau jalankan: startx (jika tidak menggunakan display manager)"
+print_info "Next steps:"
+echo "1. Logout from current session"
+echo "2. Login with BSPWM as window manager"
+echo "3. Or run: startx (if not using display manager)"
 echo ""
-print_info "Untuk menggunakan libinput-gestures, jalankan:"
+print_info "To use libinput-gestures, run:"
 echo "   libinput-gestures-setup start"
 echo "   libinput-gestures-setup autostart"
 echo ""
-print_info "Untuk mengubah tema GTK, jalankan:"
+print_info "To change GTK theme, run:"
 echo "   lxappearance"
 echo ""
-print_info "Untuk mengubah tema Qt5, jalankan:"
+print_info "To change Qt5 theme, run:"
 echo "   qt5ct"
 echo ""
-print_info "Shortcut penting:"
+print_info "Important shortcuts:"
 echo "   Super + Return       : Terminal (Alacritty)"
 echo "   Super + M            : Application Launcher (Rofi)"
 echo "   Super + Q            : Close Window"
@@ -379,5 +379,5 @@ echo "   Super + Alt + R      : Restart BSPWM"
 echo "   Super + E            : File Manager (Thunar)"
 echo "   Print                : Screenshot"
 echo ""
-print_warning "Jangan lupa untuk restart sistem Anda!"
+print_warning "Don't forget to restart your system!"
 echo ""
