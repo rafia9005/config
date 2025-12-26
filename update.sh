@@ -19,7 +19,7 @@ rsync -av \
     "${SRC_DIR}sxhkd" \
     "${SRC_DIR}polybar" \
     "${SRC_DIR}dunst" \
-    "${DEST_DIR}"
+    "${DEST_DIR}/pipeware" \
 
 # Menyalin file libinput-gestures.conf
 cp "${HOME}/.config/libinput-gestures.conf" "${DEST_DIR}"

@@ -1,0 +1,55 @@
+{
+    "database-client.autoSync": true,
+    "window.menuBarVisibility": "toggle",
+    "window.commandCenter": false,
+    "workbench.layoutControl.enabled": false,
+    "chat.commandCenter.enabled": false,
+    "window.titleBarStyle": "native",
+    "workbench.iconTheme": "material-icon-theme",
+    "editor.scrollbar.vertical": "hidden",
+    "editor.scrollbar.horizontal": "hidden",
+    "editor.minimap.enabled": false,
+    "workbench.editor.showTabs": "none",
+    "workbench.colorTheme": "Tokyo Night",
+    "editor.fontFamily": "B612 Mono",
+    "editor.fontSize": 14,
+    "workbench.sideBar.location": "right",
+    "workbench.editor.editorActionsLocation": "hidden",
+    "workbench.tree.enableStickyScroll": false,
+    "workbench.tree.renderIndentGuides": "none",
+    "workbench.tree.indent": 16,
+    "explorer.compactFolders": false,
+    // hidden
+    "workbench.activityBar.location": "top",
+    "workbench.startupEditor": "none",
+    "github.copilot.nextEditSuggestions.enabled": true,
+    "explorer.confirmDelete": false,
+    "[dockercompose]": {
+        "editor.defaultFormatter": "ms-azuretools.vscode-containers"
+    },
+    "workbench.productIconTheme": "macos-modern",
+    // "terminal.integrated.suggest.enabled": false,
+    "servers": {
+        "github": {
+            "type": "http",
+            "url": "https://api.githubcopilot.com/mcp/"
+        }
+    },
+    "chat.mcp.gallery.enabled": true,
+    "files.associations": {
+        "*.dbclient-js": "javascript",
+        "*.embeddedhtml": "html",
+        ".env*": "dotenv"
+    },
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": "keyword.other.dotenv",
+                "settings": {
+                    "foreground": "#FF000000"
+                }
+            }
+        ]
+    },
+    "window.customTitleBarVisibility": "never"
+}

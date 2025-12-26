@@ -26,25 +26,41 @@ white   = '#acb0d0'
 # size = 6.3
 size = 11
 
-[font.bold]
-family = "B612 Mono"
-style = "Bold"
-
-[font.bold_italic]
-family = "B612 Mono"
-style = "Bold Italic"
-
-[font.italic]
-family = "B612 Mono"
-style = "Italic"
+# [font.bold]
+# family = "B612 Mono"
+# style = "Bold"
+#
+# [font.bold_italic]
+# family = "B612 Mono"
+# style = "Bold Italic"
+#
+# [font.italic]
+# family = "B612 Mono"
+# style = "Italic"
+#
+# [font.normal]
+# family = "B612 Mono"
+# style = "Regular"
 
 [font.normal]
-family = "B612 Mono"
+family = "DepartureMono Nerd Font Mono"
 style = "Regular"
+
+[font.bold]
+family = "DepartureMono Nerd Font Mono"
+style = "Bold"
+
+[font.italic]
+family = "DepartureMono Nerd Font Mono"
+style = "Italic"
+
+[font.bold_italic]
+family = "DepartureMono Nerd Font Mono"
+style = "Bold Italic"
 
 [window]
 opacity = 1
 
 [window.padding]
-x = 0
+x = 20
 y = 0
