@@ -1,0 +1,120 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+$username\
+[](fg:blue bg:surface0)\
+$directory\
+[](fg:surface0 bg:yellow)\
+$git_branch\
+$git_status\
+[](fg:yellow bg:green)\
+$c\
+$rust\
+$golang\
+$nodejs\
+$php\
+$java\
+$kotlin\
+$haskell\
+$python\
+[](fg:green bg:cyan)\
+$conda\
+[](fg:cyan bg:magenta)\
+$time\
+[ ](fg:magenta)\
+$cmd_duration\
+$character"""
+
+palette = 'tokyo_night'
+
+[line_break]
+disabled = true
+
+[username]
+show_always = true
+style_user = "bg:blue fg:black"
+style_root = "bg:blue fg:black"
+format = '[ $user ]($style)'
+
+[directory]
+style = "bg:surface0 fg:blue"
+format = "[ $path ]($style)"
+truncation_length = 3
+
+[git_branch]
+symbol = ""
+style = "bg:yellow"
+format = '[[ $symbol $branch ](fg:black bg:yellow)]($style)'
+
+[git_status]
+style = "bg:yellow"
+format = '[[($all_status$ahead_behind )](fg:black bg:yellow)]($style)'
+
+[golang]
+symbol = "🐹"
+style = "bg:green"
+format = '[[ $symbol ($version) ](fg:black bg:green)]($style)'
+
+[nodejs]
+symbol = ""
+style = "bg:green"
+format = '[[ $symbol ($version) ](fg:black bg:green)]($style)'
+
+[rust]
+symbol = ""
+style = "bg:green"
+format = '[[ $symbol ($version) ](fg:black bg:green)]($style)'
+
+[c]
+symbol = ""
+style = "bg:green"
+format = '[[ $symbol ($version) ](fg:black bg:green)]($style)'
+
+[python]
+symbol = ""
+style = "bg:green"
+format = '[[ $symbol ($version) ](fg:black bg:green)]($style)'
+
+[php]
+symbol = ""
+style = "bg:green"
+format = '[[ $symbol ($version) ](fg:black bg:green)]($style)'
+
+[java]
+symbol = ""
+style = "bg:green"
+format = '[[ $symbol ($version) ](fg:black bg:green)]($style)'
+
+# --------------------------------------------------
+
+[conda]
+symbol = "  "
+style = "fg:black bg:cyan"
+format = '[$symbol$environment ]($style)'
+
+[time]
+disabled = false
+time_format = "%R"
+style = "bg:magenta"
+format = '[[  $time ](fg:black bg:magenta)]($style)'
+
+[character]
+disabled = false
+success_symbol = ""
+error_symbol = ""
+
+[cmd_duration]
+style = "fg:yellow"
+format = " $duration "
+
+[palettes.tokyo_night]
+black = "#15161e"
+foreground = "#a9b1d6"
+surface0 = "#292e42"
+blue = "#7aa2f7"
+cyan = "#7dcfff"
+green = "#9ece6a"
+magenta = "#bb9af7"
+orange = "#ff9e64"
+red = "#f7768e"
+yellow = "#e0af68"
