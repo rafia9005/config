@@ -11,6 +11,7 @@
 */
 
 /* import theme modules */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 @import url('https://refact0r.github.io/midnight-discord/build/midnight.css');
 
 body {
@@ -18,7 +19,7 @@ body {
     --font: 'figtree'; /* change to '' for default discord font */
     --code-font: ''; /* change to '' for default discord font */
     font-weight: 400; /* normal text font weight. DOES NOT AFFECT BOLD TEXT */
-    font-family: 'JetBrains Mono Nerd Font', monospace;
+    font-family: 'JetBrains Mono', monospace;
 
     /* sizes */
     --gap: 12px; /* spacing between panels */
