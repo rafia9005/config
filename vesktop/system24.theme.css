@@ -10,136 +10,148 @@
 }
 
 body {
-    --font: 'DM Mono';
-    --code-font: 'DM Mono';
-    font-weight: 300;
-    letter-spacing: -0.05ch;
-    --gap: 12px;
-    --divider-thickness: 4px;
-    --border-thickness: 2px;
-    --border-hover-transition: 0s;
-    --animations: off;
-    --list-item-transition: 0s;
-    --dms-icon-svg-transition: 0s;
-    --top-bar-height: var(--gap);
-    --top-bar-button-position: titlebar;
-    --top-bar-title-position: off;
-    --subtle-top-bar-title: off;
-    --custom-window-controls: off;
-    --custom-dms-icon: off;
-    --custom-dms-background: off;
-    --background-image: off;
-    --transparency-tweaks: off;
-    --panel-blur: off;
-    --small-user-panel: on;
-    --unrounding: on;
-    --custom-spotify-bar: on;
-    --ascii-titles: on;
-    --ascii-loader: system24;
-    --panel-labels: on;
-    --custom-chatbar: separated !important;
-    --chatbar-height: 56px !important;
+    /* font, change to '' for default discord font */
+    --font: 'DM Mono'; /* change to '' for default discord font */
+    --code-font: 'DM Mono'; /* change to '' for default discord font */
+    font-weight: 300; /* text font weight. 300 is light, 400 is normal. DOES NOT AFFECT BOLD TEXT */
+    letter-spacing: -0.05ch; /* decreases letter spacing for better readability. recommended on monospace fonts.*/
+
+    /* sizes */
+    --gap: 12px; /* spacing between panels */
+    --divider-thickness: 4px; /* thickness of unread messages divider and highlighted message borders */
+    --border-thickness: 2px; /* thickness of borders around main panels. DOES NOT AFFECT OTHER BORDERS */
+    --border-hover-transition: 0.2s ease; /* transition for borders when hovered */
+
+    /* animation/transition options */
+    --animations: on; /* off: disable animations/transitions, on: enable animations/transitions */
+    --list-item-transition: 0.2s ease; /* transition for list items */
+    --dms-icon-svg-transition: 0.4s ease; /* transition for the dms icon */
+
+    /* top bar options */
+    --top-bar-height: var(--gap); /* height of the top bar (discord default is 36px, old discord style is 24px, var(--gap) recommended if button position is set to titlebar) */
+    --top-bar-button-position: titlebar; /* off: default position, hide: hide buttons completely, serverlist: move inbox button to server list, titlebar: move inbox button to channel titlebar (will hide title) */
+    --top-bar-title-position: off; /* off: default centered position, hide: hide title completely, left: left align title (like old discord) */
+    --subtle-top-bar-title: off; /* off: default, on: hide the icon and use subtle text color (like old discord) */
+
+    /* window controls */
+    --custom-window-controls: off; /* off: default window controls, on: custom window controls */
+    --window-control-size: 14px; /* size of custom window controls */
+
+    /* dms button options */
+    --custom-dms-icon: off; /* off: use default discord icon, hide: remove icon entirely, custom: use custom icon */
+    --dms-icon-svg-url: url(''); /* icon svg url. MUST BE A SVG. */
+    --dms-icon-svg-size: 90%; /* size of the svg (css mask-size property) */
+    --dms-icon-color-before: var(--icon-subtle); /* normal icon color */
+    --dms-icon-color-after: var(--white); /* icon color when button is hovered/selected */
+    --custom-dms-background: off; /* off to disable, image to use a background image (must set url variable below), color to use a custom color/gradient */
+    --dms-background-image-url: url(''); /* url of the background image */
+    --dms-background-image-size: cover; /* size of the background image (css background-size property) */
+    --dms-background-color: linear-gradient(70deg, var(--blue-2), var(--purple-2), var(--red-2)); /* fixed color/gradient (css background property) */
+
+    /* background image options */
+    --background-image: off; /* off: no background image, on: enable background image (must set url variable below) */
+    --background-image-url: url(''); /* url of the background image */
+
+    /* transparency/blur options */
+    /* NOTE: TO USE TRANSPARENCY/BLUR, YOU MUST HAVE TRANSPARENT BG COLORS. FOR EXAMPLE: --bg-4: hsla(220, 15%, 10%, 0.7); */
+    --transparency-tweaks: off; /* off: no changes, on: remove some elements for better transparency */
+    --remove-bg-layer: off; /* off: no changes, on: remove the base --bg-3 layer for use with window transparency (WILL OVERRIDE BACKGROUND IMAGE) */
+    --panel-blur: off; /* off: no changes, on: blur the background of panels */
+    --blur-amount: 12px; /* amount of blur */
+    --bg-floating: var(--bg-3); /* set this to a more opaque color if floating panels look too transparent. only applies if panel blur is on  */
+
+    /* other options */
+    --small-user-panel: on; /* off: default user panel, on: smaller user panel like in old discord */
+
+    /* unrounding options */
+    --unrounding: on; /* off: default, on: remove rounded corners from panels */
+
+    /* styling options */
+    --custom-spotify-bar: on; /* off: default, on: custom text-like spotify progress bar */
+    --ascii-titles: on; /* off: default, on: use ascii font for titles at the start of a channel */
+    --ascii-loader: system24; /* off: default, system24: use system24 ascii loader, cats: use cats loader */
+
+    /* panel labels */
+    --panel-labels: on; /* off: default, on: add labels to panels */
+    --label-color: var(--text-muted); /* color of labels */
+    --label-font-weight: 500; /* font weight of labels */
 }
 
+/* color options */
 :root {
-    --colors: on;
-    --text-0: #16161e;
-    --text-1: #c0caf5;
-    --text-2: #a9b1d6;
-    --text-3: #9aa5ce;
-    --text-4: #565f89;
-    --text-5: #414868;
-    --bg-1: #1a1b26;
-    --bg-2: #24283b;
-    --bg-3: #1f2335;
-    --bg-4: #16161e;
-    --hover: transparent;
-    --active: #2f3549;
-    --active-2: #2f3549;
-    --message-hover: transparent;
-    --accent-1: #7aa2f7;
-    --accent-2: #bb9af7;
-    --accent-3: #7dcfff;
-    --accent-4: #7aa2f7;
-    --accent-5: #2ac3de;
-    --accent-new: #f7768e;
-    --online: #9ece6a;
-    --dnd: #f7768e;
-    --idle: #e0af68;
-    --streaming: #bb9af7;
-    --offline: #545c7e;
-    --border-light: transparent;
-    --border: #2f3549;
-    --border-hover: #bb9af7;
-    --red-1: #f7768e; --red-2: #f7768e; --red-3: #f7768e;
-    --green-1: #9ece6a; --green-2: #9ece6a; --green-3: #9ece6a;
-    --blue-1: #7aa2f7; --blue-2: #7aa2f7; --blue-3: #7aa2f7;
-    --yellow-1: #e0af68; --yellow-2: #e0af68; --yellow-3: #e0af68;
-    --purple-1: #bb9af7; --purple-2: #bb9af7; --purple-3: #bb9af7;
-    --mention: #2f3549;
-    --mention-hover: #2f3549;
-}
+    --colors: on; /* off: discord default colors, on: midnight custom colors */
 
-.visual-refresh ._960e4207cea8323e-bg,
-.visual-refresh ._01ae244280823725-container {
-    background: var(--bg-4);
-}
+    /* text colors */
+    --text-0: var(--bg-4); /* text on colored elements */
+    --text-1: oklch(95% 0 0); /* other normally white text */
+    --text-2: oklch(85% 0 0); /* headings and important text */
+    --text-3: oklch(75% 0 0); /* normal text */
+    --text-4: oklch(60% 0 0); /* icon buttons and channels */
+    --text-5: oklch(40% 0 0); /* muted channels/chats and timestamps */
 
-@container body style(--ascii-titles: on) {
-    h3[data-text-variant='heading-xxl/extrabold'] {
-        font-family: 'asciid';
-        font-size: 50px;
-        font-weight: 400;
-    }
-}
+    /* background and dark colors */
+    --bg-1: oklch(31% 0 0); /* dark buttons when clicked */
+    --bg-2: oklch(27% 0 0); /* dark buttons */
+    --bg-3: oklch(23% 0 0); /* spacing, secondary elements */
+    --bg-4: oklch(19% 0 0); /* main background color */
+    --hover: oklch(54% 0 0 / 0.1); /* channels and buttons when hovered */
+    --active: oklch(54% 0 0 / 0.2); /* channels and buttons when clicked or selected */
+    --active-2: oklch(54% 0 0 / 0.3); /* extra state for transparent buttons */
+    --message-hover: var(--hover); /* messages when hovered */
 
-@container body style(--ascii-loader: system24) {
-    .a2f5142ba8328dfd-content { display: flex; flex-direction: column; align-items: center; gap: 20px; }
-    .a2f5142ba8328dfd-content > .a2f5142ba8328dfd-spinner { display: none; }
-    .a2f5142ba8328dfd-content::before {
-        display: block;
-        content: '                    __                ___  __ __\A    _______  _______/ /____  ____ ___ |__ \\/ // /\A   / ___/ / / / ___/ __/ _ \\/ __ `__ \\__/ / // /_\A  (__  ) /_/ (__  ) /_/  __/ / / / / / __/__  __/\A/____/\\__, /____/\\__/\\___/_/ /_/ /_/____/ /_/   \A      /____/                                     ';
-        font-size: 18px; font-family: monospace; white-space: pre; line-height: 1.2;
-        color: var(--accent-1);
-    }
-}
+    /* accent colors */
+    --accent-1: var(--purple-1); /* links and other accent text */
+    --accent-2: var(--purple-2); /* small accent elements */
+    --accent-3: var(--purple-3); /* accent buttons */
+    --accent-4: var(--purple-4); /* accent buttons when hovered */
+    --accent-5: var(--purple-5); /* accent buttons when clicked */
+    --accent-new: var(--red-2); /* stuff that's normally red like mute/deafen buttons */
+    --mention: linear-gradient(to right, color-mix(in hsl, var(--accent-2), transparent 90%) 40%, transparent); /* background of messages that mention you */
+    --mention-hover: linear-gradient(to right, color-mix(in hsl, var(--accent-2), transparent 95%) 40%, transparent); /* background of messages that mention you when hovered */
+    --reply: linear-gradient(to right, color-mix(in hsl, var(--text-3), transparent 90%) 40%, transparent); /* background of messages that reply to you */
+    --reply-hover: linear-gradient(to right, color-mix(in hsl, var(--text-3), transparent 95%) 40%, transparent); /* background of messages that reply to you when hovered */
 
-@container body style(--panel-labels: on) {
-    .visual-refresh ._5e434347c823b592-guilds::after { content: 'nav'; }
-    .visual-refresh ._5e434347c823b592-panels::after { content: 'user'; }
-    .visual-refresh ._5e434347c823b592-sidebarList::after { content: 'channels'; }
-    .visual-refresh .f75fb00fb7356cbe-subtitleContainer::after { content: 'channel'; }
-    .visual-refresh ._36d072eab2b2e737-messagesWrapper::after { content: 'chat'; }
-    .visual-refresh .f75fb00fb7356cbe-channelTextArea::after { content: 'input'; }
-    
-    .visual-refresh ._5e434347c823b592-guilds, 
-    .visual-refresh ._5e434347c823b592-panels, 
-    .visual-refresh ._5e434347c823b592-sidebarList,
-    .visual-refresh .f75fb00fb7356cbe-subtitleContainer,
-    .visual-refresh ._36d072eab2b2e737-messagesWrapper,
-    .visual-refresh .f75fb00fb7356cbe-channelTextArea {
-        position: relative; overflow: visible !important;
-    }
+    /* status indicator colors */
+    --online: var(--green-2); /* change to #40a258 for default */
+    --dnd: var(--red-2); /* change to #d83a41 for default */
+    --idle: var(--yellow-2); /* change to #cc954c for default */
+    --streaming: var(--purple-2); /* change to ##9147ff for default */
+    --offline: var(--text-4); /* change to #82838b for default offline color */
 
-    .visual-refresh ._5e434347c823b592-guilds::after,
-    .visual-refresh ._5e434347c823b592-panels::after,
-    .visual-refresh ._5e434347c823b592-sidebarList::after,
-    .visual-refresh .f75fb00fb7356cbe-subtitleContainer::after,
-    .visual-refresh ._36d072eab2b2e737-messagesWrapper::after,
-    .visual-refresh .f75fb00fb7356cbe-channelTextArea::after {
-        display: block; color: var(--text-5); font-weight: 500; position: absolute;
-        top: -10px; left: 8px; background-color: var(--bg-4); padding: 0 4px;
-        z-index: 100; font-size: 14px;
-    }
-}
+    /* border colors */
+    --border-light: var(--hover); /* general light border color */
+    --border: var(--active); /* general normal border color */
+    --border-hover: var(--accent-2); /* border color of panels when hovered */
+    --button-border: hsl(220, 0%, 100%, 0.1); /* neutral border color of buttons */
 
-@container body style(--unrounding: on) {
-    *, *::before, *::after { border-radius: 0 !important; }
-    .cc5dd25190031396-svg > mask, ._44b0c28be7879b7b-svg > rect, ._20a53846fe2e8513-avatar .a423bdd721ddcc83-status { display: none; }
-    ._68edb95846a37624-mask > foreignObject, ._44b0c28be7879b7b-svg > foreignObject { mask: none; }
-}
+    /* base colors */
+    --red-1: oklch(75% 0.13 0);
+    --red-2: oklch(70% 0.13 0);
+    --red-3: oklch(65% 0.13 0);
+    --red-4: oklch(60% 0.13 0);
+    --red-5: oklch(55% 0.13 0);
 
-#app-mount ._44b0c28be7879b7b-wrapper::after {
-    content: ''; display: block; position: absolute; height: 8px; width: 8px;
-    bottom: -4px; right: -4px; border: 2px solid var(--bg-4);
+    --green-1: oklch(75% 0.12 170);
+    --green-2: oklch(70% 0.12 170);
+    --green-3: oklch(65% 0.12 170);
+    --green-4: oklch(60% 0.12 170);
+    --green-5: oklch(55% 0.12 160);
+
+    --blue-1: oklch(75% 0.11 215);
+    --blue-2: oklch(70% 0.11 215);
+    --blue-3: oklch(65% 0.11 215);
+    --blue-4: oklch(60% 0.11 215);
+    --blue-5: oklch(55% 0.11 215);
+
+    --yellow-1: oklch(80% 0.12 90);
+    --yellow-2: oklch(75% 0.12 90);
+    --yellow-3: oklch(70% 0.12 90);
+    --yellow-4: oklch(65% 0.12 90);
+    --yellow-5: oklch(60% 0.12 90);
+
+    --purple-1: oklch(75% 0.12 310);
+    --purple-2: oklch(70% 0.12 310);
+    --purple-3: oklch(65% 0.12 310);
+    --purple-4: oklch(60% 0.12 310);
+    --purple-5: oklch(55% 0.12 310);
 }
