@@ -18,7 +18,7 @@ body {
     --font: 'figtree'; /* change to '' for default discord font */
     --code-font: ''; /* change to '' for default discord font */
     font-weight: 400; /* normal text font weight. DOES NOT AFFECT BOLD TEXT */
-    font-family: 'DepartureMono Nerd Font Mono';
+    font-family: 'JetBrains Mono Nerd Font';
 
     /* sizes */
     --gap: 12px; /* spacing between panels */
