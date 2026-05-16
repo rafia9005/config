@@ -1,0 +1,75 @@
+{
+  "preset": "zen-free",
+  "presets": {
+    "zen-free": {
+      "orchestrator": {
+        "model": "github-copilot/gpt-5.2-codex",
+        "skills": [
+          "*"
+        ],
+        "mcps": [
+          "websearch"
+        ]
+      },
+      "oracle": {
+        "model": "github-copilot/gemini-3-flash-preview",
+        "variant": "high",
+        "skills": [],
+        "mcps": []
+      },
+      "librarian": {
+        "model": "github-copilot/gemini-3-flash-preview",
+        "variant": "low",
+        "skills": [],
+        "mcps": [
+          "websearch",
+          "context7",
+          "grep_app"
+        ]
+      },
+      "explorer": {
+        "model": "opencode/big-pickle",
+        "variant": "low",
+        "skills": [],
+        "mcps": []
+      },
+      "designer": {
+        "model": "github-copilot/gemini-3-flash-preview",
+        "variant": "medium",
+        "skills": [],
+        "mcps": []
+      },
+      "fixer": {
+        "model": "github-copilot/gpt-5.1-codex-mini",
+        "variant": "low",
+        "skills": [],
+        "mcps": []
+      }
+    }
+  },
+  "balanceProviderUsage": false,
+  "fallback": {
+    "enabled": true,
+    "timeoutMs": 15000,
+    "chains": {
+      "orchestrator": [
+        "opencode/big-pickle"
+      ],
+      "oracle": [
+        "opencode/big-pickle"
+      ],
+      "designer": [
+        "opencode/big-pickle"
+      ],
+      "explorer": [
+        "opencode/big-pickle"
+      ],
+      "librarian": [
+        "opencode/big-pickle"
+      ],
+      "fixer": [
+        "opencode/big-pickle"
+      ]
+    }
+  }
+}
