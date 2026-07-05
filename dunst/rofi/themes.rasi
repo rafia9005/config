@@ -1,17 +1,15 @@
-@import "~/.cache/wal/colors-rofi-dark.rasi";
-
 * {
-    bg-col:       @background;
-    bg-col-light: @background;
-    border-col:   @color5;      
-    selected-col: @background;
-    blue:         @color4;      
-    fg-col:       @foreground;
-    fg-col2:      @color1;      
-    grey:         @color8;      
+    bg-col:  #1e1e2e;
+    bg-col-light: #1e1e2e;
+    border-col: #9999CC;
+    selected-col: #1e1e2e;
+    blue: #89b4fa;
+    fg-col: #cdd6f4;
+    fg-col2: #f38ba8;
+    grey: #6c7086;
 
-    width: 650;
-    font: "JetBrains Mono Nerd Font 9";
+    width: 500;
+    font: "BigBlueTermPlus Nerd Font 8";
 }
 
 element-text, element-icon , mode-switcher {

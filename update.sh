@@ -7,7 +7,7 @@ DEST="${PWD}"
 echo "→ Backing up config to ${DEST}"
 
 # Dirs to sync
-DIRS=(alacritty bspwm dunst nvim picom pipewire polybar rofi sxhkd)
+DIRS=(alacritty bspwm dunst nvim picom pipewire polybar rofi sxhkd wal)
 
 for d in "${DIRS[@]}"; do
     if [ -d "${SRC}${d}" ]; then

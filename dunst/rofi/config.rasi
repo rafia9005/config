@@ -1,0 +1,10 @@
+configuration{
+    modi: "drun";
+    icon-theme: "Oranchelo";
+    drun-display-format: "{name}";
+    disable-history: false;
+    hide-scrollbar: true;
+    display-drun: "   Run ";
+}
+
+@theme "themes"
