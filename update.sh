@@ -1,26 +1,33 @@
 #!/bin/bash
+set -euo pipefail
 
-# Direktori tujuan backup (Diasumsikan script ini dijalankan di dalam direktori "config")
-DEST_DIR="${PWD}"
+SRC="${HOME}/.config/"
+DEST="${PWD}"
 
-# Direktori sumber konfigurasi (Home Directory)
-SRC_DIR="${HOME}/.config/"
+echo "→ Backing up config to ${DEST}"
 
-# --- Gunakan rsync untuk menyalin, mengabaikan folder .git ---
+# Dirs to sync
+DIRS=(alacritty bspwm dunst nvim picom pipewire polybar rofi sxhkd)
 
-# Menyalin folder Alacritty, bspwm, nvim, picom, rofi, sxhkd, polybar, dan dunst
-rsync -av \
-    --exclude '.git' \
-    "${SRC_DIR}alacritty" \
-    "${SRC_DIR}bspwm" \
-    "${SRC_DIR}nvim" \
-    "${SRC_DIR}picom" \
-    "${SRC_DIR}rofi" \
-    "${SRC_DIR}sxhkd" \
-    "${SRC_DIR}polybar" \
-    "${SRC_DIR}dunst" \
+for d in "${DIRS[@]}"; do
+    if [ -d "${SRC}${d}" ]; then
+        rsync -aq --delete "${SRC}${d}/" "${DEST}/${d}/"
+        echo "  ✓ ${d}"
+    else
+        echo "  ⚠ ${d} — missing in source"
+    fi
+done
 
-# Menyalin file libinput-gestures.conf
-cp "${HOME}/.config/libinput-gestures.conf" "${DEST_DIR}"
+# Standalone files
+FILES=(libinput-gestures.conf starship.toml settings.json config.toml)
 
-echo "Backup konfigurasi berhasil diselesaikan. Folder .git telah diabaikan."
+for f in "${FILES[@]}"; do
+    if [ -f "${SRC}${f}" ]; then
+        cp "${SRC}${f}" "${DEST}/${f}"
+        echo "  ✓ ${f}"
+    else
+        echo "  ⚠ ${f} — missing in source"
+    fi
+done
+
+echo "→ Done"
