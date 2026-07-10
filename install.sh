@@ -90,11 +90,9 @@ PACKAGES=(
     "network-manager-applet"
     "brightnessctl"
     "light"
-    "feh"
     "sxiv"
     "p7zip"
     "unrar"
-    "xclip"
     "xsel"
     "acpi"
     "acpid"
@@ -117,14 +115,7 @@ PACKAGES=(
 )
 
 print_info "Installing main packages..."
-for package in "${PACKAGES[@]}"; do
-    if pacman -Qs $package > /dev/null ; then
-        print_success "$package already installed"
-    else
-        print_info "Installing $package..."
-        sudo pacman -S --noconfirm $package
-    fi
-done
+sudo pacman -S --noconfirm --needed "${PACKAGES[@]}"
 
 echo ""
 print_success "All main packages successfully installed!"
@@ -159,14 +150,7 @@ print_info "Do you want to install packages from AUR? (y/n)"
 read -r response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     print_info "Installing packages from AUR..."
-    for package in "${AUR_PACKAGES[@]}"; do
-        if yay -Qs $package > /dev/null ; then
-            print_success "$package already installed"
-        else
-            print_info "Installing $package..."
-            yay -S --noconfirm $package
-        fi
-    done
+    yay -S --noconfirm --needed "${AUR_PACKAGES[@]}"
 fi
 
 echo ""
