@@ -10,32 +10,31 @@ configuration {
     display-run: "   Cmd ";
     display-window: "   Win ";
     sidebar-mode: true;
-    font: "JetBrainsMono Nerd Font 11";
+    font: "JetBrainsMono Nerd Font 9";
     show-icons: true;
     display-ssh: "   SSH";
     terminal: "kitty";
 }
 
 window {
-    width:             520px;
-    border-radius:     16px;
+    width:             400px;
+    border-radius:     12px;
     border:            1px;
     border-color:      @border-color;
     background-color:  @background;
-    padding:           12px;
+    padding:           8px;
 }
 
 mainbox {
-    spacing:           8px;
+    spacing:           6px;
     padding:           0;
     children:          [inputbar, listview];
 }
 
 inputbar {
-    background-color:  @background;
-    border-radius:     12px;
-    padding:           10px 14px;
-    spacing:           10px;
+    border-radius:     10px;
+    padding:           6px 10px;
+    spacing:           8px;
     children:          [prompt, entry];
 }
 
@@ -44,7 +43,7 @@ prompt {
 }
 
 entry {
-    font:              "JetBrainsMono Nerd Font 11";
+    font:              "JetBrainsMono Nerd Font 9";
     placeholder:       "Type Here";
     placeholder-color: @foreground;
     text-color:        @foreground;
@@ -53,18 +52,18 @@ entry {
 }
 
 listview {
-    spacing:           4px;
+    spacing:           2px;
     scrollbar:         false;
     layout:            vertical;
     columns:           1;
     cycle:             true;
     dynamic:           true;
-    lines:             8;
+    lines:             6;
 }
 
 element {
-    border-radius:     10px;
-    padding:           8px 14px;
+    border-radius:     8px;
+    padding:           4px 10px;
     background-color:  transparent;
     text-color:        @foreground;
     highlight:         bold;
@@ -104,7 +103,7 @@ element selected.active {
 }
 
 element-icon {
-    size:              22px;
+    size:              18px;
     padding:           0 8px 0 0;
 }
 
@@ -126,15 +125,15 @@ button selected {
 }
 
 message {
-    border-radius:     10px;
+    border-radius:     8px;
     background-color:  @background;
-    padding:           8px 14px;
+    padding:           4px 10px;
     text-color:        @foreground;
 }
 
 error-message {
-    border-radius:     10px;
+    border-radius:     8px;
     background-color:  @background;
-    padding:           8px 14px;
+    padding:           4px 10px;
     text-color:        @foreground;
 }

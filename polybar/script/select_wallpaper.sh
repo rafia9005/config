@@ -80,3 +80,5 @@ if [ -f "$STARSHIP_CONF" ]; then
     sed -i "s|color_red   = .*|color_red   = \"$c1\"|" "$STARSHIP_CONF"
     sed -i "s|color_white = .*|color_white = \"$c15\"|" "$STARSHIP_CONF"
 fi
+
+dunstctl reload &> /dev/null || pkill -USR1 dunst &> /dev/null
