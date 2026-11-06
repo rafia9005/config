@@ -1,0 +1,110 @@
+configuration {
+    modi: "drun,run,window,ssh";
+    icon-theme: "Oranchelo";
+    drun-display-format: "{name}";
+    disable-history: false;
+    hide-scrollbar: true;
+    display-drun: "  ";
+    display-run: "  ";
+    display-window: "  ";
+    display-ssh: "  ";
+    sidebar-mode: false;
+    font: "JetBrainsMono Nerd Font 8";
+    show-icons: true;
+    terminal: "kitty";
+}
+
+* {
+    /* Tokyo Night Palette */
+    bg:                     #1a1b26;
+    bg-alt:                 #24283b;
+    fg:                     #c0caf5;
+    fg-alt:                 #565f89;
+    accent:                 #7aa2f7;
+    urgent:                 #f7768e;
+    active:                 #9ece6a;
+
+    background-color:       transparent;
+    text-color:             @fg;
+    margin:                 0;
+    padding:                0;
+    spacing:                0;
+    border:                 0px;
+}
+
+window {
+    background-color:       @bg;
+    border:                 1px;
+    border-color:           @accent;
+    border-radius:          8px;
+    width:                  280px;
+    padding:                8px;
+}
+
+mainbox {
+    spacing:                6px;
+    children:               [ inputbar, listview ];
+}
+
+inputbar {
+    background-color:       @bg-alt;
+    border-radius:          6px;
+    padding:                4px 6px;
+    spacing:                6px;
+    children:               [ prompt, entry ];
+}
+
+prompt {
+    background-color:       @accent;
+    text-color:             @bg;
+    padding:                3px 6px;
+    border-radius:          4px;
+}
+
+entry {
+    padding:                3px;
+    text-color:             @fg;
+    placeholder:            "Search...";
+    placeholder-color:      @fg-alt;
+    cursor:                 "|";
+    blink:                  true;
+}
+
+listview {
+    lines:                  5;
+    columns:                1;
+    spacing:                3px;
+    cycle:                  true;
+    dynamic:                true;
+    scrollbar:              false;
+    border:                 0px;
+}
+
+element {
+    padding:                4px 6px;
+    border-radius:          5px;
+    background-color:       transparent;
+    text-color:             @fg;
+    children:               [ element-icon, element-text ];
+}
+
+element-icon {
+    size:                   14px;
+    margin:                 0 6px 0 0;
+}
+
+element-text {
+    vertical-align:         0.5;
+    text-color:             inherit;
+    highlight:              bold;
+}
+
+element normal.normal, element alternate.normal {
+    background-color:       transparent;
+    text-color:             @fg;
+}
+
+element selected.normal {
+    background-color:       @accent;
+    text-color:             @bg;
+}

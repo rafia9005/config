@@ -1,0 +1,11 @@
+[palettes.ccswe_dark]
+color_bg1 = "{color4}"
+color_bg2 = "{color12}"
+color_bg3 = "{color8}"
+color_bg4 = "{color0}"
+color_bg5 = "{background}"
+
+color_blue  = "{color4}"
+color_gray  = "{color7}"
+color_red   = "{color1}"
+color_white = "{color15}"
