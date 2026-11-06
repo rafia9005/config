@@ -1,0 +1,4 @@
+gesture swipe left bspc desktop -f prev.local
+gesture swipe right bspc desktop -f next.local
+gesture swipe up 3 rofi -show drun
+gesture swipe down 3 xdotool key Escape
