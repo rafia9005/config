@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+unset WAYLAND_DISPLAY
+unset XKB_DEFAULT_RULES
+unset XKB_DEFAULT_MODEL
+unset XKB_DEFAULT_LAYOUT
+unset XKB_DEFAULT_VARIANT
+unset XKB_DEFAULT_OPTIONS
+export WLR_RENDERER=pixman
+export WLR_NO_HARDWARE_CURSORS=1
+bspc rule -a "wlroots" state=tiled focus=on follow=on 2>/dev/null || true
+cage -- waydroid show-full-ui "$@" &
+CAGE_PID=$!
+for i in $(seq 1 20); do
+    NODE_ID=$(bspc query -N -n .window | while read -r id; do
+        if xprop -id "$id" WM_CLASS 2>/dev/null | grep -qi "wlroots"; then
+            echo "$id"
+            break
+        fi
+    done)
+    if [ -n "$NODE_ID" ]; then
+        sleep 0.5
+        bspc node "$NODE_ID" -g hidden=on
+        sleep 0.2
+        bspc node "$NODE_ID" -g hidden=off
+        bspc node "$NODE_ID" -f
+        break
+    fi
+    sleep 0.5
+done
+wait $CAGE_PID
